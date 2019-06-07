@@ -189,6 +189,13 @@ while len(traversalGraph) < 500 and len(traversalPath) < 3000:
         
         # Direction needed to get back to room to back track
         stack.push(n)
+    else:
+        backTrackTo = stack.pop()
+
+        if backTrackTo is None:
+            break
+        player.travel(backTrackTo)
+        traversalPath.append(backTrackTo)
 
 # TRAVERSAL TEST
 visited_rooms = set()
