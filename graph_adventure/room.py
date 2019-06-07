@@ -12,7 +12,7 @@ class Room:
         self.x = x
         self.y = y
     def __str__(self):
-        return f"\n-------------------\n\n{self.name}\n\n   {self.description}\n\n{self.getExitsString()}\n"
+        return "\n-------------------\n\n{}\n\n   {}\n\n{self.getExitsString()}\n".format(self.name, self.description)
     def printRoomDescription(self, player):
         print(str(self))
     def getExits(self):
@@ -27,7 +27,7 @@ class Room:
             exits.append("e")
         return exits
     def getExitsString(self):
-        return f"Exits: [{', '.join(self.getExits())}]"
+        return "Exits: [{}]".format(', '.join(self.getExits()))
     def connectRooms(self, direction, connectingRoom):
         if direction == "n":
             self.n_to = connectingRoom

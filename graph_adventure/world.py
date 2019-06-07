@@ -15,7 +15,7 @@ class World:
         for i in range(0, numRooms):
             x = roomGraph[i][0][0]
             gridSize = max(gridSize, roomGraph[i][0][0], roomGraph[i][0][1])
-            self.rooms[i] = Room(f"Room {i}", f"({roomGraph[i][0][0]},{roomGraph[i][0][1]})",i, roomGraph[i][0][0], roomGraph[i][0][1])
+            self.rooms[i] = Room("Room {}".format(i), "({},{})".format(roomGraph[i][0][0], roomGraph[i][0][1]),i, roomGraph[i][0][0], roomGraph[i][0][1])
         self.roomGrid = []
         gridSize += 1
         self.gridSize = gridSize
@@ -68,7 +68,7 @@ class World:
                 else:
                     str += " "
                 if room is not None:
-                    str += f"{room.id}".zfill(3)
+                    str += "{}".format(room.id).zfill(3)
                 else:
                     str += "   "
                 if room is not None and room.e_to is not None:

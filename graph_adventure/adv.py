@@ -21,8 +21,9 @@ player = Player("Name", world.startingRoom)
 
 
 # FILL THIS IN
-traversalPath = ['n', 's']
+traversalPath = ['n', 's', 'w', 'e']
 
+traversalGraph = {}
 
 # TRAVERSAL TEST
 visited_rooms = set()
@@ -33,10 +34,10 @@ for move in traversalPath:
     visited_rooms.add(player.currentRoom)
 
 if len(visited_rooms) == len(roomGraph):
-    print(f"TESTS PASSED: {len(traversalPath)} moves, {len(visited_rooms)} rooms visited")
+    print("TESTS PASSED: {} moves, {} rooms visited".format(len(traversalPath), len(visited_rooms)))
 else:
     print("TESTS FAILED: INCOMPLETE TRAVERSAL")
-    print(f"{len(roomGraph) - len(visited_rooms)} unvisited rooms")
+    print("{} unvisited rooms".format(len(roomGraph) - len(visited_rooms)))
 
 
 
