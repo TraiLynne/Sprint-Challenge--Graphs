@@ -21,7 +21,12 @@ player = Player("Name", world.startingRoom)
 
 
 # FILL THIS IN
-traversalPath = ['n', 's', 'w', 'e']
+n = 'n'
+s = 's'
+w = 'w'
+e ='e'
+ph = '?'
+traversalPath = [n, s, w, e]
 
 traversalGraph = {}
 
@@ -40,6 +45,28 @@ class Stack:
         return len(self.stack)
 
 stack = Stack()
+
+
+while len(traversalGraph) < 500 and len(traversalPath) < 3000:
+    currentRoom = player.currentRoom.id
+
+    print('Current room: {} - Explored {} rooms, {} steps'.format(currentRoom, len(traversalGraph),  len(traversalPath)))
+
+    if currentRoom not in traversalGraph:
+        exits = {}
+
+        # Set placeholder for exits
+        for exit in player.currentRoom.getExits():
+            exits[exit] = ph
+
+        # add the exits we found to the graph for the current room ID
+        traversalGraph[currentRoom] = exits
+
+    # fetch the available exits
+    exits = traversalGraph[currentRoom]
+    print('==> Exits: {}'.format(exits))
+
+
 
 # TRAVERSAL TEST
 visited_rooms = set()
